@@ -5,28 +5,29 @@ class Snake:
         self.head = [10, 10]
         self.tail = []
         self.direction = None
+        self.directionChange = None
 
         self.delay = 10
         self.cooldown = self.delay 
     
     def update(self):
+        if self.game.input.keys["left"]:
+            if self.direction != "right":
+                self.directionChange = "left"
+        elif self.game.input.keys["right"]:
+            if self.direction != "left":
+                self.directionChange = "right"
+        elif self.game.input.keys["up"]:
+            if self.direction != "down":
+                self.directionChange = "up"
+        elif self.game.input.keys["down"]:
+            if self.direction != "up":
+                self.directionChange = "down"
+
         self.cooldown -= 1
         if self.cooldown <= 0:
             self.cooldown = self.delay
-
-            if self.game.input.keys["left"]:
-                if self.direction != "right":
-                    self.direction = "left"
-            elif self.game.input.keys["right"]:
-                if self.direction != "left":
-                    self.direction = "right"
-            elif self.game.input.keys["up"]:
-                if self.direction != "down":
-                    self.direction = "up"
-            elif self.game.input.keys["down"]:
-                if self.direction != "up":
-                    self.direction = "down"
-    
+            self.direction = self.directionChange
             self.move()
     
     def move(self):
@@ -41,7 +42,7 @@ class Snake:
         elif self.direction == "down":
             self.head[1] += 1
         
-        if self.head[0] < 0 or self.head[0] > self.game.size[0] or self.head[1] < 0 or self.head[1] > self.game.size[1]:
+        if self.head[0] < 0 or self.head[0] > self.game.size[0] or self.head[1] < 0 or self.head[1] > self.game.size[1] or self.head in self.tail:
             self.game.running = False
         
         for count in range(len(self.tail)):
