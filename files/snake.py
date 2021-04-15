@@ -42,9 +42,6 @@ class Snake:
         elif self.direction == "down":
             self.head[1] += 1
         
-        if self.head[0] < 0 or self.head[0] > self.game.size[0] or self.head[1] < 0 or self.head[1] > self.game.size[1] or self.head in self.tail:
-            self.game.running = False
-        
         for count in range(len(self.tail)):
             temp = self.tail[count].copy()
             self.tail[count] = prev.copy()
@@ -53,3 +50,6 @@ class Snake:
         if self.head == self.game.apple.position:
             self.game.apple.new_pos()
             self.tail.append(prev.copy())
+        
+        if self.head[0] < 0 or self.head[0] > self.game.size[0] or self.head[1] < 0 or self.head[1] > self.game.size[1] or self.head in self.tail:
+            self.game.running = False
