@@ -25,6 +25,7 @@ class Snake:
                 self.directionChange = "right"
 
         self.cooldown -= 1
+
         if self.cooldown <= 0:
             self.cooldown = self.delay
 
@@ -36,7 +37,7 @@ class Snake:
                 self.game.running = False
     
     def move(self):
-        prevHead = self.head.copy()
+        self.tail.insert(0, self.head.copy())
 
         if self.direction == "left":
             self.head[0] -= 1
@@ -46,8 +47,6 @@ class Snake:
             self.head[1] -= 1
         elif self.direction == "down":
             self.head[1] += 1
-        
-        self.tail = [prevHead] + self.tail
         
         if self.head == self.game.apple.position:
             self.game.apple.new_pos()
