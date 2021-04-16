@@ -48,8 +48,10 @@ class Snake:
             self.head[1] += 1
         
         self.tail = [prevHead] + self.tail
-        self.tail.pop(-1)
+        
 
         if self.head == self.game.apple.position:
             self.game.apple.new_pos()
-            self.tail.append(prevHead)
+            self.tail.append(self.tail[-1])
+
+        self.tail.pop(-1)
