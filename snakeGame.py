@@ -23,6 +23,7 @@ class Game:
             self.window.update()
             self.input.update()
             self.snake.update()
+        print(f"Score: {len(self.snake.tail) + 1}")
 
 game = Game()
 game.start()
