@@ -14,13 +14,13 @@ class Snake:
         if self.game.input.keys["left"]:
             if self.direction != "right":
                 self.directionChange = "left"
-        elif self.game.input.keys["right"]:
+        if self.game.input.keys["right"]:
             if self.direction != "left":
                 self.directionChange = "right"
-        elif self.game.input.keys["up"]:
+        if self.game.input.keys["up"]:
             if self.direction != "down":
                 self.directionChange = "up"
-        elif self.game.input.keys["down"]:
+        if self.game.input.keys["down"]:
             if self.direction != "up":
                 self.directionChange = "down"
 

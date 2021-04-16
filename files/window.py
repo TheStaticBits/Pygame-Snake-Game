@@ -8,7 +8,7 @@ class Window:
 
         self.clock = pygame.time.Clock()
 
-        self.bgColor = (150, 150, 150)
+        self.bgColor = (55, 55, 55)
 
         self.windowSize = (400, 400)
         self.window = pygame.display.set_mode(self.windowSize)
@@ -21,7 +21,7 @@ class Window:
     def render(self):
         for y in range(self.game.size[1] + 1):
             for x in range(self.game.size[0] + 1):
-                color = (200, 200, 200)
+                color = (75, 75, 75)
 
                 if [x, y] == self.game.snake.head or [x, y] in self.game.snake.tail:
                     color = (0, 255, 0)
