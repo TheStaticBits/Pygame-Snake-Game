@@ -11,18 +11,18 @@ class Snake:
         self.cooldown = self.delay 
     
     def update(self):
-        if self.game.input.keys["left"]:
-            if self.direction != "right":
-                self.directionChange = "left"
-        if self.game.input.keys["right"]:
-            if self.direction != "left":
-                self.directionChange = "right"
         if self.game.input.keys["up"]:
             if self.direction != "down":
                 self.directionChange = "up"
         if self.game.input.keys["down"]:
             if self.direction != "up":
                 self.directionChange = "down"
+        if self.game.input.keys["left"]:
+            if self.direction != "right":
+                self.directionChange = "left"
+        if self.game.input.keys["right"]:
+            if self.direction != "left":
+                self.directionChange = "right"
 
         self.cooldown -= 1
         if self.cooldown <= 0:
