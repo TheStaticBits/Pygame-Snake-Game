@@ -19,10 +19,10 @@ class Game:
 
     def start(self):
         while self.running:
-            self.window.render()
-            self.window.update()
             self.input.update()
             self.snake.update()
+            self.window.render()
+            self.window.update()
         print(f"Score: {len(self.snake.tail) + 1}")
 
 game = Game()
